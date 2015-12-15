@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>Web experiment</title>
+<style>
+    #cnv {width:15cm; height:9cm; border:2px solid black; background-color:darkgray;}
+    #cnv1 {width:15cm; height:9cm; border:2px solid black; background-color:darkgray;}
+    #p1 {display:block;}    
+    #p2 {display:none;}
+    #p3 {display:none;}
+    #interpage {display:none;}
+    #practicePage {display:none;}
+    #p4 {display:none;}
+    #p5 {display:none;}
+
+</style>
+<body>
+    <div id="p1">
+    <h1> Instructions</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dictum arcu at leo faucibus porttitor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec scelerisque viverra augue, feugiat auctor erat hendrerit vel. Mauris rhoncus quam tortor, sed viverra odio eleifend non. Vivamus suscipit nibh nec volutpat consequat. Proin sit amet tellus metus. Aliquam molestie tincidunt nulla. Praesent egestas nunc leo. Donec urna est, scelerisque at velit sed, finibus lacinia augue.
+
+Aliquam at augue condimentum, lacinia odio vitae, porttitor ligula. Vivamus est ex, commodo eget gravida id, rutrum vel sem. Donec et pharetra orci. Morbi placerat in mauris at porta. Nunc accumsan eros nisl, vel gravida odio mollis id. Cras posuere odio quis malesuada commodo. Phasellus at ullamcorper lacus. Duis gravida nibh velit, sed imperdiet nunc laoreet ac. Proin consequat urna libero, eu tristique ipsum pellentesque sed. In vitae enim non risus facilisis cursus. Praesent vestibulum justo leo, vel venenatis libero sagittis at. Mauris at lacus ut lacus gravida cursus. Aenean imperdiet dui purus, at scelerisque mi ultricies ut.
+
+Suspendisse ut tincidunt arcu, vel ultricies orci. Nam dapibus felis sed euismod luctus. Proin scelerisque faucibus turpis vitae blandit. Duis sit amet cursus turpis. Ut ac mi nisl. Sed hendrerit condimentum sapien sit amet lacinia. Ut blandit tincidunt turpis quis vestibulum. Nam vitae nunc dolor. Phasellus dui orci, eleifend molestie mollis ut, congue eget arcu. Aenean lobortis tempor accumsan. Maecenas sit amet vehicula est. Vestibulum eu ligula gravida, sodales nulla nec, faucibus augue. Quisque tincidunt ante eget velit sollicitudin, sed pretium tellus porttitor. Proin tristique ex orci, eu iaculis nibh facilisis nec.</p>  
+    <button id="button1" onclick="changePage('p1','p2')"> Continue </button></div>
+    <div id="p2"> <h1> Consent Form</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dictum arcu at leo faucibus porttitor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec scelerisque viverra augue, feugiat auctor erat hendrerit vel. Mauris rhoncus quam tortor, sed viverra odio eleifend non. Vivamus suscipit nibh nec volutpat consequat. Proin sit amet tellus metus. Aliquam molestie tincidunt nulla. Praesent egestas nunc leo. Donec urna est, scelerisque at velit sed, finibus lacinia augue.
+
+Aliquam at augue condimentum, lacinia odio vitae, porttitor ligula. Vivamus est ex, commodo eget gravida id, rutrum vel sem. Donec et pharetra orci. Morbi placerat in mauris at porta. Nunc accumsan eros nisl, vel gravida odio mollis id. Cras posuere odio quis malesuada commodo. Phasellus at ullamcorper lacus. Duis gravida nibh velit, sed imperdiet nunc laoreet ac. Proin consequat urna libero, eu tristique ipsum pellentesque sed. In vitae enim non risus facilisis cursus. Praesent vestibulum justo leo, vel venenatis libero sagittis at. Mauris at lacus ut lacus gravida cursus. Aenean imperdiet dui purus, at scelerisque mi ultricies ut.
+
+Suspendisse ut tincidunt arcu, vel ultricies orci. Nam dapibus felis sed euismod luctus. Proin scelerisque faucibus turpis vitae blandit. Duis sit amet cursus turpis. Ut ac mi nisl. Sed hendrerit condimentum sapien sit amet lacinia. Ut blandit tincidunt turpis quis vestibulum. Nam vitae nunc dolor. Phasellus dui orci, eleifend molestie mollis ut, congue eget arcu. Aenean lobortis tempor accumsan. Maecenas sit amet vehicula est. Vestibulum eu ligula gravida, sodales nulla nec, faucibus augue. Quisque tincidunt ante eget velit sollicitudin, sed pretium tellus porttitor. Proin tristique ex orci, eu iaculis nibh facilisis nec.</p>
+    <button id="button2" onclick="changePage('p2','p3')"> Continue </button>
+    </div>
+    <div id="p3">
+    <h3> The following will be used to generate your anonymous participant ID: <br><br>
+        Please enter the <b>day and month</b> of your birthday using the "ddmm" format 
+        <br> followed by the <b>last four digits</b> of your mobile phone number.
+        <br>Then press continue. 
+        </h3>
+        <input type="text" id="participantID">
+        <button id="button3" onclick=saveandcontinue()> Continue</button>
+        <div id="interpage">
+    <button onclick="changePage('interpage','p4')">Continue</button></div>
+    <div id="p4">
+    <p><canvas id="cnv" width="500" height="300"></canvas></p>
+    <p id="start"> Please press the <b>S </b>key when you are ready to begin the experiment.</p>  
+    <p>Press the <b>LEFT</b> arrow key if statement is TRUE.</p>
+    <p>Press the <b>RIGHT</b> arrow key if statement is FALSE.</p>
+    </div>
+    <div id="p5">
+    <button onclick="showResults()"> Show Results</button>
+    <div id="textarea" type="text" height:600px width:400px>
+        </div>
+    </div>
+<script src="www.phon.ucl.ac.uk/courses/spsci/webprog/include/uclserver.js"></script>
+<script src="js.js"></script>
+</body>
+</html>
+    

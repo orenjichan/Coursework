@@ -1,0 +1,35 @@
+body {
+    font-family: Trebuchet MS, sans-serif;
+}
+
+div.headbar{
+    background-color: black;
+    max-width: auto;
+    height: 80px;
+}
+div.headbar h1{
+    color: white;
+    position:relative; 
+    }
+#ucl {
+    height=60px;
+    width:272px;
+    float:right;
+}
+#title {
+    position:absolute; /* tried to make the title float at bottom of div, but bottom 0; just put it at the bottom of page */
+    top: 35px;
+}
+div.sidebar {
+    background-color: #303030;
+    width:25%;
+    max-width:25%;
+    height:auto;
+    float:left;
+    font-color: white;
+}
+div.maintext {
+    width: 75%;
+    height:auto;
+    float:right;
+}

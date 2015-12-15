@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        var yellArr = [];
+        var blueArr = [];
+//fills yellow array with values 5 - 15
+        function numyellow() {
+            var i;
+            for ( i=5; i <= 15 ; i++ ) {
+                yellArr.push(i);
+            }; 
+            return yellArr;
+        }
+// reverse values of yellow to form blue array 
+        numyellow();
+        blueArr = yellArr.slice(0,11);
+        blueArr.reverse();    
+        
+//console.log("Yellow:" + yellArr)      //checked
+//console.log("Blue:" + blueArr)        //checked
+        
+// Ball variations stimulus table
+        var proportionsTab({proportion:yellArr[0] ,blueArr[0];             })  //console.log(proportionsTab);  //checked // not needed?
+        
+// new function to have draw function automatically run for every element in the yellArr and BlueArr arrays
+        var nblue
+        var nyellow
+        
+        function generate() {
+            for (blueArr[0] == "" && yellArr[0] == "") {
+            yellArr[0]= nyellow;
+            yellBlue[0]= nblue;    
+            yellArr.shift();
+            blueArr.shift();
+            draw();
+            };
+        }
+        
+//MH script
+        
+        // check if this ball would touch others on list
+        function istouching(blist,x,y,radius) {
+            for (var i=0;i<blist.length;i++) {
+                var pos=blist[i];
+                var d = Math.sqrt((pos.x-x)*(pos.x-x)+(pos.y-y)*(pos.y-y));
+                if (d < 2 *radius) return true;
+            }
+            return false;
+        }
+        
+// draw the desired number of balls
+    function draw() {
+      //  var nblue=blueArr[0]; //change this to have specific proportions, with different variable and 
+     //   var nyellow=yellArr[0]; 
+        // get the drawing canvas
+        var canvas=document.getElementById('cnv');
+        var ctx=canvas.getContext('2d');
+        var width=canvas.width;
+        var height=canvas.height;
+        var radius=height/10;
+        
+        // add random balls to list
+        
+        var blist=[];
+        while (blist.length<(nblue+nyellow)) {
+            var x=Math.random()*(width-2*radius);
+            var y=Math.random()*(height-2*radius);
+            if (!istouching(blist,x,y,radius))
+                blist.push({ x:x, y:y });
+            };
+        // clear the canvas
+        ctx.clearRect(0,0,width,height);
+        // draw the yellow ones
+        for (var i=0;i<nyellow;i++) {
+            var pos=blist.pop();
+            ctx.beginPath();
+            ctx.strokeStyle="yellow";
+            ctx.fillStyle="yellow";
+            ctx.arc(pos.x+radius,pos.y+radius,radius,0,Math.PI*2,true); 
+            ctx.fill();
+        };
+        // draw the blue ones
+        for (var i=0;i<nblue;i++) {
+            var pos=blist.pop();
+            ctx.beginPath();
+            ctx.strokeStyle="blue";
+            ctx.fillStyle="blue";
+            ctx.arc(pos.x+radius,pos.y+radius,radius,0,Math.PI*2,true); 
+            ctx.fill();
+        };
+    }
+    </script>
+    <style>
+        #cnv { width:15cm; height:9cm; border:2px solid black; background-color: darkgrey;}
+    </style>
+</head>
+<body>
+    
+    <p><canvas id="cnv" width="500" height="300"></canvas></p>
+    <button onclick=draw()> DRAW </button>
+    
+    </body>
+</html>
