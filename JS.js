@@ -48,20 +48,24 @@ function compare(questions, condition) {
             };
             if (stimtab[stimpos].w1 == "blue") {
                 if (eval(stimtab[stimpos].nblue + stimtab[stimpos].lessormore) == true){
+                    console.log(stimtab[stimpos].nblue);
                     console.log("number of blue is " + stimtab[stimpos].lessormore + "is true");
                     stimtab[stimpos].refval = "true";
                 }
                     else {
+                        console.log(stimtab[stimpos].nblue);
                         console.log("number of blue is " + stimtab[stimpos].lessormore + "is false");
                         stimtab[stimpos].refval = "false";
                     };
             }
                 else {
                     if (eval(stimtab[stimpos].nyell + stimtab[stimpos].lessormore) == true){
-                    console.log("number of yellow is " + stimtab[stimpos].lessormore + "is true");
-                    stimtab[stimpos].refval = "true";
+                        console.log(stimtab[stimpos].nyell);
+                        console.log("number of yellow is " + stimtab[stimpos].lessormore + "is true");
+                        stimtab[stimpos].refval = "true";
                     }
                         else {
+                            console.log(stimtab[stimpos].nyell);
                             console.log("number of yellow is " + stimtab[stimpos].lessormore + "is false");
                             stimtab[stimpos].refval = "false";
                         };
