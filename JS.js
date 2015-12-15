@@ -3,6 +3,7 @@
 var stimtab = [];
 var stimpos = 0;
 var stimcnt = 0;
+var questions = ["At least seven", "At most seven", "At least thirteen", "At most thirteen"];
 function shuffle(array) {
     for (var i = array.length - 1; i > 0; i--) {
             var j = Math.floor(Math.random() * (i + 1));
@@ -31,31 +32,7 @@ var nyell=stimtab[stimpos].nyell;
                           fixCross();
                           },1000);
 }
-function displayText(){
-    //text in canvas
-    draw(0,0); //clears fixation cross
-    //temporary reference line
-    ctx.font      = "normal 20px Times";
-    ctx.fillStyle = "#000000";
-    ctx.textAlign = "center", canvas.width/2 ,canvas.height/2.5; 
-    ctx.fillText(stimtab[stimpos].quantifier+ " of the circles are " +stimtab[stimpos].w1+ ".",canvas.width/2, canvas.height/2);
-    setTimeout(function(){draw(0,0);
-                          displaystimulus();
-                         },1200);
-}
-/*ctx.font      = "normal 20px Times";
-    ctx.fillStyle = "#000000";
-    ctx.textAlign = "center"; 
-    ctx.fillText(stimtab[stimpos].quantifier */
-var questions = ["At least seven", "At most seven", "At least thirteen", "At most thirteen"];   
-function initialise() {
-    for (var w=0; w<questions.length; w++) {
-        for (var n=5;n<=15;n++) {
-            stimtab.push({ nblue:n, nyell:(20-n), quantifier:questions[w], w1:"blue"});
-            stimtab.push({ nblue:n, nyell:(20-n), quantifier:questions[w], w1:"yellow"});
-            };
-    };
-    function compare(questions, condition) {
+function compare(questions, condition) {
             console.log(condition);
             if (questions[0] == condition){
                 stimtab[stimpos].lessormore = ">= 7";
@@ -90,7 +67,33 @@ function initialise() {
                         };
                     
                 };
+};
+function displayText(){
+    //text in canvas
+    draw(0,0); //clears fixation cross
+    //temporary reference line
+    ctx.font      = "normal 20px Times";
+    ctx.fillStyle = "#000000";
+    ctx.textAlign = "center", canvas.width/2 ,canvas.height/2.5; 
+    ctx.fillText(stimtab[stimpos].quantifier+ " of the circles are " +stimtab[stimpos].w1+ ".",canvas.width/2, canvas.height/2);
+    compare(questions, stimtab[stimpos].quantifier);
+    setTimeout(function(){draw(0,0);
+                          displaystimulus();
+                         },1200);
+}
+/*ctx.font      = "normal 20px Times";
+    ctx.fillStyle = "#000000";
+    ctx.textAlign = "center"; 
+    ctx.fillText(stimtab[stimpos].quantifier */
+   
+function initialise() {
+    for (var w=0; w<questions.length; w++) {
+        for (var n=5;n<=15;n++) {
+            stimtab.push({ nblue:n, nyell:(20-n), quantifier:questions[w], w1:"blue"});
+            stimtab.push({ nblue:n, nyell:(20-n), quantifier:questions[w], w1:"yellow"});
+            };
     };
+   
             
     /*            
                 for (var b = 0;b<lessormore.length;b++) {
@@ -120,7 +123,6 @@ function initialise() {
                 };
     };
     */
-    compare(questions, stimtab[stimpos].quantifier);
     shuffle(stimtab);
     stimcnt=stimtab.length;
     stimpos=0;
