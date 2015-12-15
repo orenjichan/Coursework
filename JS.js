@@ -30,7 +30,7 @@ var nyell=stimtab[stimpos].nyell;
     console.log(stimpos);
     setTimeout(function() {draw(0,0);
                           fixCross();
-                          },1000);
+                          },3000);
 }
 function compare(questions, condition) {
             console.log(condition);
@@ -79,7 +79,7 @@ function displayText(){
     compare(questions, stimtab[stimpos].quantifier);
     setTimeout(function(){draw(0,0);
                           displaystimulus();
-                         },1200);
+                         },2500);
 }
 /*ctx.font      = "normal 20px Times";
     ctx.fillStyle = "#000000";
