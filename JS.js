@@ -55,28 +55,57 @@ function initialise() {
             stimtab.push({ nblue:n, nyell:(20-n), quantifier:questions[w], w1:"yellow"});
             };
     };
-    /*function compare() {
+    function compare(questions, condition) {
         console.log("compare")
-        if (stimtab[stimpos].quantifier.questions[0])
-            stimtab[stimpos].push({lessormore: [">= 7"]});
-        else if (stimtab[stimpos].quantifier.questions[2])
-            stimtab[stimpos].push({lessormore: [">= 13"]}); 
-        else if (stimtab[stimpos].quantifier.questions[1])
-            stimtab[stimpos].push({lessormore: ["<= 7"]});
-        else 
-            stimtab[stimpos].push({lessormore:["<= 13"]});    
-
-        if (stimtab[stimpos].w1 == "blue") {
-            for (var b = 0;b<lessormore.length;b++) {
-              console.log(eval(stimtab[stimpos].nblue.value + stimtab[stimpos].lessormore[b]) == true) 
+        
+            console.log(condition);
+            if (questions[0] == condition){
+                stimtab[stimpos].push({lessormore: [">= 7"]})
+            }
+            else if (questions[2] == condition){
+                stimtab[stimpos].push({lessormore: [">= 13"]})
+            }
+            else if (questions[1] == condition){
+                stimtab[stimpos].push({lessormore: ["<= 7"]})
+            }
+            else {
+                stimtab[stimpos].push({lessormore:["<= 13"]}) 
             };
-        };
+
+            if (stimtab[stimpos].w1 == "blue") {
+                for (var b = 0;b<lessormore.length;b++) {
+                  if(eval(stimtab[stimpos].nblue + stimtab[stimpos].lessormore[b]) == true) {
+                      stimtab[stimpos].push({accuracy:"true"})
+                  }
+                      else{
+                          stimtab[stimpos].push({accuracy:"false"})
+                      };
+                };
+            }
+                else {
+                    for (var b = 0;b<lessormore.length;b++) {
+                      if(eval(stimtab[stimpos].nyell + stimtab[stimpos].lessormore[b]) == true) {
+                          stimtab[stimpos].push({accuracy:"true"})
+                      }
+                          else {
+                              stimtab[stimpos].push({accuracy:"false"})
+                        };
+                    };
+                };
+            if (stimtab[stimpos].accuracy === data.stimtab[stimpos].response) {
+                console.log("Response is correct")
+                }
+                else{
+                    console.log("Response is incorrect")
+                };
     };
-    //compare(); */
+
+    compare(questions, stimtab[stimpos].quantifier);
     shuffle(stimtab);
     stimcnt=stimtab.length;
     stimpos=0;
     displayText();
+   
 }   
 //keypress event listener     
  addEventListener("keydown", function (e) {     //change to keyup
@@ -106,7 +135,6 @@ function recordResponse(a) {
     UCLSave("Kasia","test",pptID,"1",stimpos,stimtab[stimpos],report);
     nextstimulus();  
 }
-
 //recordpptID
 var data = [];
 var pptID = "";
