@@ -129,11 +129,13 @@ function recordResponse(a) {
     console.log("stimtab stimpos response is "+a);
     if (stimtab[stimpos].refval == stimtab[stimpos].response) {
                 console.log("response is correct!")
+                stimtab[stimpos].accuracy = "correct";
             }
                 else {
                     console.log("response is not correct")
+                    stimtab[stimpos].accuracy = "incorrect";
                 };
-    UCLSave("Kasia","test",pptID,"1",stimpos,stimtab[stimpos],report);
+    UCLSave("Kasia","test2",pptID,"1",stimpos,stimtab[stimpos],report);
     nextstimulus();  
 }
 //recordpptID
