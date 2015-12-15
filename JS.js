@@ -69,8 +69,8 @@ function compare(questions, condition) {
                             console.log("number of yellow is " + stimtab[stimpos].lessormore + "is false");
                             stimtab[stimpos].refval = "false";
                         };
-                    
                 };
+            console.log(stimtab[stimpos].refval);
 };
 function displayText(){
     //text in canvas
@@ -97,36 +97,6 @@ function initialise() {
             stimtab.push({ nblue:n, nyell:(20-n), quantifier:questions[w], w1:"yellow"});
             };
     };
-   
-            
-    /*            
-                for (var b = 0;b<lessormore.length;b++) {
-                  if(eval(stimtab[stimpos].nblue + stimtab[stimpos].lessormore[b]) == true) {
-                      stimtab[stimpos].accuracy = "true";
-                  }
-                      else{
-                          stimtab[stimpos].push({accuracy:"false"})
-                      };
-                };
-            }
-                else {
-                    for (var b = 0;b<lessormore.length;b++) {
-                      if(eval(stimtab[stimpos].nyell + stimtab[stimpos].lessormore[b]) == true) {
-                          stimtab[stimpos].push({accuracy:"true"})
-                      }
-                          else {
-                              stimtab[stimpos].push({accuracy:"false"})
-                        };
-                    };
-                };
-            if (stimtab[stimpos].accuracy === data.stimtab[stimpos].response) {
-                console.log("Response is correct")
-                }
-                else{
-                    console.log("Response is incorrect")
-                };
-    };
-    */
     shuffle(stimtab);
     stimcnt=stimtab.length;
     stimpos=0;
@@ -157,6 +127,12 @@ function nextstimulus() {
 function recordResponse(a) {
     stimtab[stimpos].response = a;
     console.log("stimtab stimpos response is "+a);
+    if (stimtab[stimpos].refval == stimtab[stimpos].response) {
+                console.log("response is correct!")
+            }
+                else {
+                    console.log("response is not correct")
+                };
     UCLSave("Kasia","test",pptID,"1",stimpos,stimtab[stimpos],report);
     nextstimulus();  
 }
